@@ -1,0 +1,35 @@
+name: Aggiornamento prezzi iPhone
+
+on:
+  schedule:
+    - cron: '0 2 * * *'   # 02:00 UTC = 03:00 inverno / 04:00 estate ora italiana
+  workflow_dispatch:        # permette di lanciarlo a mano dalla tab Actions
+
+permissions:
+  contents: write
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Esegui scraper
+        run: node scraper.js
+
+      - name: Commit dei cambiamenti
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add prezzi.json colors.json
+          if git diff --staged --quiet; then
+            echo "Nessuna modifica"
+          else
+            git commit -m "chore: aggiornamento prezzi $(date -u +%Y-%m-%d)"
+            git push
+          fi
