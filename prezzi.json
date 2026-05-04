@@ -1,0 +1,688 @@
+{
+  "aggiornato": "2026-05-04T19:27:31.061Z",
+  "fonte": "wefix.it store 365 + fallback manuale",
+  "formula": "wefix +5€ (+20€ supervaluta)",
+  "statistiche": {
+    "modelli_da_wefix": 18,
+    "totale": 29
+  },
+  "dati": {
+    "iPhone 11": {
+      "64 GB": {
+        "Black": 85,
+        "White": 85,
+        "Green": 85,
+        "Yellow": 85,
+        "Purple": 85,
+        "PRODUCT(RED)": 85
+      },
+      "128 GB": {
+        "Black": 100,
+        "White": 100,
+        "Green": 100,
+        "Yellow": 100,
+        "Purple": 100,
+        "PRODUCT(RED)": 100
+      },
+      "256 GB": {
+        "Black": 115,
+        "White": 115,
+        "Green": 115,
+        "Yellow": 115,
+        "Purple": 115,
+        "PRODUCT(RED)": 115
+      }
+    },
+    "iPhone 11 Pro": {
+      "64 GB": {
+        "Midnight Green": 95,
+        "Space Gray": 95,
+        "Silver": 95,
+        "Gold": 95
+      },
+      "256 GB": {
+        "Midnight Green": 135,
+        "Space Gray": 135,
+        "Silver": 135,
+        "Gold": 135
+      },
+      "512 GB": {
+        "Midnight Green": 160,
+        "Space Gray": 160,
+        "Silver": 160,
+        "Gold": 160
+      }
+    },
+    "iPhone 11 Pro Max": {
+      "64 GB": {
+        "Midnight Green": 130,
+        "Space Gray": 130,
+        "Silver": 130,
+        "Gold": 130
+      },
+      "256 GB": {
+        "Midnight Green": 155,
+        "Space Gray": 155,
+        "Silver": 155,
+        "Gold": 155
+      },
+      "512 GB": {
+        "Midnight Green": 180,
+        "Space Gray": 180,
+        "Silver": 180,
+        "Gold": 180
+      }
+    },
+    "iPhone SE (3ª gen 2022)": {
+      "64 GB": {
+        "Midnight": 70,
+        "Starlight": 70,
+        "PRODUCT(RED)": 70
+      },
+      "128 GB": {
+        "Midnight": 120,
+        "Starlight": 120,
+        "PRODUCT(RED)": 120
+      },
+      "256 GB": {
+        "Midnight": 135,
+        "Starlight": 135,
+        "PRODUCT(RED)": 135
+      }
+    },
+    "iPhone 12": {
+      "64 GB": {
+        "Black": 125,
+        "White": 125,
+        "Green": 125,
+        "Blue": 125,
+        "Purple": 125,
+        "PRODUCT(RED)": 125
+      },
+      "128 GB": {
+        "Black": 150,
+        "White": 150,
+        "Green": 150,
+        "Blue": 150,
+        "Purple": 150,
+        "PRODUCT(RED)": 150
+      },
+      "256 GB": {
+        "Black": 175,
+        "White": 175,
+        "Green": 175,
+        "Blue": 175,
+        "Purple": 175,
+        "PRODUCT(RED)": 175
+      }
+    },
+    "iPhone 12 mini": {
+      "64 GB": {
+        "Black": 100,
+        "White": 100,
+        "Green": 100,
+        "Blue": 100,
+        "Purple": 100,
+        "PRODUCT(RED)": 100
+      },
+      "128 GB": {
+        "Black": 115,
+        "White": 115,
+        "Green": 115,
+        "Blue": 115,
+        "Purple": 115,
+        "PRODUCT(RED)": 115
+      },
+      "256 GB": {
+        "Black": 145,
+        "White": 145,
+        "Green": 145,
+        "Blue": 145,
+        "Purple": 145,
+        "PRODUCT(RED)": 145
+      }
+    },
+    "iPhone 12 Pro": {
+      "128 GB": {
+        "Graphite": 245,
+        "Silver": 245,
+        "Gold": 245,
+        "Pacific Blue": 245
+      },
+      "256 GB": {
+        "Graphite": 270,
+        "Silver": 270,
+        "Gold": 270,
+        "Pacific Blue": 270
+      },
+      "512 GB": {
+        "Graphite": 295,
+        "Silver": 295,
+        "Gold": 295,
+        "Pacific Blue": 295
+      }
+    },
+    "iPhone 12 Pro Max": {
+      "128 GB": {
+        "Graphite": 290,
+        "Silver": 290,
+        "Gold": 290,
+        "Pacific Blue": 290
+      },
+      "256 GB": {
+        "Graphite": 320,
+        "Silver": 320,
+        "Gold": 320,
+        "Pacific Blue": 320
+      },
+      "512 GB": {
+        "Graphite": 335,
+        "Silver": 335,
+        "Gold": 335,
+        "Pacific Blue": 335
+      }
+    },
+    "iPhone 13": {
+      "128 GB": {
+        "Midnight": 195,
+        "Starlight": 195,
+        "Pink": 195,
+        "Blue": 195,
+        "Green": 195,
+        "PRODUCT(RED)": 195
+      },
+      "256 GB": {
+        "Midnight": 220,
+        "Starlight": 220,
+        "Pink": 220,
+        "Blue": 220,
+        "Green": 220,
+        "PRODUCT(RED)": 220
+      },
+      "512 GB": {
+        "Midnight": 265,
+        "Starlight": 265,
+        "Pink": 265,
+        "Blue": 265,
+        "Green": 265,
+        "PRODUCT(RED)": 265
+      }
+    },
+    "iPhone 13 mini": {
+      "128 GB": {
+        "Midnight": 190,
+        "Starlight": 190,
+        "Pink": 190,
+        "Blue": 190,
+        "Green": 190,
+        "PRODUCT(RED)": 190
+      },
+      "256 GB": {
+        "Midnight": 235,
+        "Starlight": 235,
+        "Pink": 235,
+        "Blue": 235,
+        "Green": 235,
+        "PRODUCT(RED)": 235
+      },
+      "512 GB": {
+        "Midnight": 290,
+        "Starlight": 290,
+        "Pink": 290,
+        "Blue": 290,
+        "Green": 290,
+        "PRODUCT(RED)": 290
+      }
+    },
+    "iPhone 13 Pro": {
+      "128 GB": {
+        "Graphite": 335,
+        "Gold": 335,
+        "Silver": 335,
+        "Sierra Blue": 335,
+        "Alpine Green": 335
+      },
+      "256 GB": {
+        "Graphite": 365,
+        "Gold": 365,
+        "Silver": 365,
+        "Sierra Blue": 365,
+        "Alpine Green": 365
+      },
+      "512 GB": {
+        "Graphite": 390,
+        "Gold": 390,
+        "Silver": 390,
+        "Sierra Blue": 390,
+        "Alpine Green": 390
+      },
+      "1 TB": {
+        "Graphite": 460,
+        "Gold": 460,
+        "Silver": 460,
+        "Sierra Blue": 460,
+        "Alpine Green": 460
+      }
+    },
+    "iPhone 13 Pro Max": {
+      "128 GB": {
+        "Graphite": 380,
+        "Gold": 380,
+        "Silver": 380,
+        "Sierra Blue": 380,
+        "Alpine Green": 380
+      },
+      "256 GB": {
+        "Graphite": 400,
+        "Gold": 400,
+        "Silver": 400,
+        "Sierra Blue": 400,
+        "Alpine Green": 400
+      },
+      "512 GB": {
+        "Graphite": 435,
+        "Gold": 435,
+        "Silver": 435,
+        "Sierra Blue": 435,
+        "Alpine Green": 435
+      },
+      "1 TB": {
+        "Graphite": 500,
+        "Gold": 500,
+        "Silver": 500,
+        "Sierra Blue": 500,
+        "Alpine Green": 500
+      }
+    },
+    "iPhone 14": {
+      "128 GB": {
+        "Midnight": 260,
+        "Starlight": 260,
+        "Blue": 260,
+        "Purple": 260,
+        "Yellow": 260,
+        "PRODUCT(RED)": 260
+      },
+      "256 GB": {
+        "Midnight": 295,
+        "Starlight": 295,
+        "Blue": 295,
+        "Purple": 295,
+        "Yellow": 295,
+        "PRODUCT(RED)": 295
+      },
+      "512 GB": {
+        "Midnight": 315,
+        "Starlight": 315,
+        "Blue": 315,
+        "Purple": 315,
+        "Yellow": 315,
+        "PRODUCT(RED)": 315
+      }
+    },
+    "iPhone 14 Plus": {
+      "128 GB": {
+        "Midnight": 270,
+        "Starlight": 270,
+        "Blue": 270,
+        "Purple": 270,
+        "Yellow": 270,
+        "PRODUCT(RED)": 270
+      },
+      "256 GB": {
+        "Midnight": 310,
+        "Starlight": 310,
+        "Blue": 310,
+        "Purple": 310,
+        "Yellow": 310,
+        "PRODUCT(RED)": 310
+      },
+      "512 GB": {
+        "Midnight": 340,
+        "Starlight": 340,
+        "Blue": 340,
+        "Purple": 340,
+        "Yellow": 340,
+        "PRODUCT(RED)": 340
+      }
+    },
+    "iPhone 14 Pro": {
+      "128 GB": {
+        "Space Black": 350,
+        "Silver": 350,
+        "Gold": 350,
+        "Deep Purple": 350
+      },
+      "256 GB": {
+        "Space Black": 410,
+        "Silver": 410,
+        "Gold": 410,
+        "Deep Purple": 410
+      },
+      "512 GB": {
+        "Space Black": 415,
+        "Silver": 415,
+        "Gold": 415,
+        "Deep Purple": 415
+      },
+      "1 TB": {
+        "Space Black": 510,
+        "Silver": 510,
+        "Gold": 510,
+        "Deep Purple": 510
+      }
+    },
+    "iPhone 14 Pro Max": {
+      "128 GB": {
+        "Space Black": 405,
+        "Silver": 405,
+        "Gold": 405,
+        "Deep Purple": 405
+      },
+      "256 GB": {
+        "Space Black": 475,
+        "Silver": 475,
+        "Gold": 475,
+        "Deep Purple": 475
+      },
+      "512 GB": {
+        "Space Black": 515,
+        "Silver": 515,
+        "Gold": 515,
+        "Deep Purple": 515
+      },
+      "1 TB": {
+        "Space Black": 550,
+        "Silver": 550,
+        "Gold": 550,
+        "Deep Purple": 550
+      }
+    },
+    "iPhone 15": {
+      "128 GB": {
+        "Black": 410,
+        "Blue": 410,
+        "Green": 410,
+        "Pink": 410,
+        "Yellow": 410
+      },
+      "256 GB": {
+        "Black": 450,
+        "Blue": 450,
+        "Green": 450,
+        "Pink": 450,
+        "Yellow": 450
+      },
+      "512 GB": {
+        "Black": 500,
+        "Blue": 500,
+        "Green": 500,
+        "Pink": 500,
+        "Yellow": 500
+      }
+    },
+    "iPhone 15 Plus": {
+      "128 GB": {
+        "Black": 430,
+        "Blue": 430,
+        "Green": 430,
+        "Pink": 430,
+        "Yellow": 430
+      },
+      "256 GB": {
+        "Black": 495,
+        "Blue": 495,
+        "Green": 495,
+        "Pink": 495,
+        "Yellow": 495
+      },
+      "512 GB": {
+        "Black": 570,
+        "Blue": 570,
+        "Green": 570,
+        "Pink": 570,
+        "Yellow": 570
+      }
+    },
+    "iPhone 15 Pro": {
+      "128 GB": {
+        "Black Titanium": 430,
+        "White Titanium": 430,
+        "Blue Titanium": 430,
+        "Natural Titanium": 430
+      },
+      "256 GB": {
+        "Black Titanium": 485,
+        "White Titanium": 485,
+        "Blue Titanium": 485,
+        "Natural Titanium": 485
+      },
+      "512 GB": {
+        "Black Titanium": 550,
+        "White Titanium": 550,
+        "Blue Titanium": 550,
+        "Natural Titanium": 550
+      },
+      "1 TB": {
+        "Black Titanium": 575,
+        "White Titanium": 575,
+        "Blue Titanium": 575,
+        "Natural Titanium": 575
+      }
+    },
+    "iPhone 15 Pro Max": {
+      "256 GB": {
+        "Black Titanium": 520,
+        "White Titanium": 520,
+        "Blue Titanium": 520,
+        "Natural Titanium": 520
+      },
+      "512 GB": {
+        "Black Titanium": 550,
+        "White Titanium": 550,
+        "Blue Titanium": 550,
+        "Natural Titanium": 550
+      },
+      "1 TB": {
+        "Black Titanium": 580,
+        "White Titanium": 580,
+        "Blue Titanium": 580,
+        "Natural Titanium": 580
+      }
+    },
+    "iPhone 16": {
+      "128 GB": {
+        "Black": 485,
+        "Blue": 485,
+        "Green": 485,
+        "Pink": 485,
+        "Yellow": 485
+      },
+      "256 GB": {
+        "Black": 565,
+        "Blue": 565,
+        "Green": 565,
+        "Pink": 565,
+        "Yellow": 565
+      },
+      "512 GB": {
+        "Black": 660,
+        "Blue": 660,
+        "Green": 660,
+        "Pink": 660,
+        "Yellow": 660
+      }
+    },
+    "iPhone 16 Plus": {
+      "128 GB": {
+        "Black": 535,
+        "Blue": 535,
+        "Green": 535,
+        "Pink": 535,
+        "Yellow": 535
+      },
+      "256 GB": {
+        "Black": 650,
+        "Blue": 650,
+        "Green": 650,
+        "Pink": 650,
+        "Yellow": 650
+      },
+      "512 GB": {
+        "Black": 755,
+        "Blue": 755,
+        "Green": 755,
+        "Pink": 755,
+        "Yellow": 755
+      }
+    },
+    "iPhone 16 Pro": {
+      "128 GB": {
+        "Black Titanium": 585,
+        "White Titanium": 585,
+        "Blue Titanium": 585,
+        "Natural Titanium": 585
+      },
+      "256 GB": {
+        "Black Titanium": 680,
+        "White Titanium": 680,
+        "Blue Titanium": 680,
+        "Natural Titanium": 680
+      },
+      "512 GB": {
+        "Black Titanium": 845,
+        "White Titanium": 845,
+        "Blue Titanium": 845,
+        "Natural Titanium": 845
+      },
+      "1 TB": {
+        "Black Titanium": 910,
+        "White Titanium": 910,
+        "Blue Titanium": 910,
+        "Natural Titanium": 910
+      }
+    },
+    "iPhone 16 Pro Max": {
+      "128 GB": {
+        "Black Titanium": 785,
+        "White Titanium": 785,
+        "Blue Titanium": 785,
+        "Natural Titanium": 785
+      },
+      "256 GB": {
+        "Black Titanium": 715,
+        "White Titanium": 715,
+        "Blue Titanium": 715,
+        "Natural Titanium": 715
+      },
+      "512 GB": {
+        "Black Titanium": 820,
+        "White Titanium": 820,
+        "Blue Titanium": 820,
+        "Natural Titanium": 820
+      },
+      "1 TB": {
+        "Black Titanium": 925,
+        "White Titanium": 925,
+        "Blue Titanium": 925,
+        "Natural Titanium": 925
+      }
+    },
+    "iPhone 16e": {
+      "128 GB": {
+        "Black": 395,
+        "White": 395
+      },
+      "256 GB": {
+        "Black": 450,
+        "White": 450
+      },
+      "512 GB": {
+        "Black": 590,
+        "White": 590
+      }
+    },
+    "iPhone 17": {
+      "256 GB": {
+        "Black": "Prossimamente",
+        "Blue": "Prossimamente",
+        "Green": "Prossimamente",
+        "Pink": "Prossimamente",
+        "Yellow": "Prossimamente"
+      },
+      "512 GB": {
+        "Black": "Prossimamente",
+        "Blue": "Prossimamente",
+        "Green": "Prossimamente",
+        "Pink": "Prossimamente",
+        "Yellow": "Prossimamente"
+      }
+    },
+    "iPhone 17 Pro": {
+      "256 GB": {
+        "Black Titanium": "Prossimamente",
+        "White Titanium": "Prossimamente",
+        "Blue Titanium": "Prossimamente",
+        "Natural Titanium": "Prossimamente"
+      },
+      "512 GB": {
+        "Black Titanium": "Prossimamente",
+        "White Titanium": "Prossimamente",
+        "Blue Titanium": "Prossimamente",
+        "Natural Titanium": "Prossimamente"
+      },
+      "1 TB": {
+        "Black Titanium": "Prossimamente",
+        "White Titanium": "Prossimamente",
+        "Blue Titanium": "Prossimamente",
+        "Natural Titanium": "Prossimamente"
+      }
+    },
+    "iPhone 17 Pro Max": {
+      "256 GB": {
+        "Black Titanium": "Prossimamente",
+        "White Titanium": "Prossimamente",
+        "Blue Titanium": "Prossimamente",
+        "Natural Titanium": "Prossimamente"
+      },
+      "512 GB": {
+        "Black Titanium": "Prossimamente",
+        "White Titanium": "Prossimamente",
+        "Blue Titanium": "Prossimamente",
+        "Natural Titanium": "Prossimamente"
+      },
+      "1 TB": {
+        "Black Titanium": "Prossimamente",
+        "White Titanium": "Prossimamente",
+        "Blue Titanium": "Prossimamente",
+        "Natural Titanium": "Prossimamente"
+      },
+      "2 TB": {
+        "Black Titanium": "Prossimamente",
+        "White Titanium": "Prossimamente",
+        "Blue Titanium": "Prossimamente",
+        "Natural Titanium": "Prossimamente"
+      }
+    },
+    "iPhone Air": {
+      "256 GB": {
+        "Black Titanium": "Prossimamente",
+        "White Titanium": "Prossimamente",
+        "Blue Titanium": "Prossimamente",
+        "Natural Titanium": "Prossimamente"
+      },
+      "512 GB": {
+        "Black Titanium": "Prossimamente",
+        "White Titanium": "Prossimamente",
+        "Blue Titanium": "Prossimamente",
+        "Natural Titanium": "Prossimamente"
+      },
+      "1 TB": {
+        "Black Titanium": "Prossimamente",
+        "White Titanium": "Prossimamente",
+        "Blue Titanium": "Prossimamente",
+        "Natural Titanium": "Prossimamente"
+      }
+    }
+  }
+}
