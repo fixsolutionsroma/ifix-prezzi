@@ -101,7 +101,7 @@ const FALLBACK_PRICES = {
   'iPhone 16': { '128 GB': 530, '256 GB': 595, '512 GB': 680 },
   'iPhone 16 Plus': { '128 GB': 625, '256 GB': 705, '512 GB': 775 },
   'iPhone 16 Pro': { '128 GB': 705, '256 GB': 745, '512 GB': 880, '1 TB': 980 },
-  'iPhone 16 Pro Max': { '128 GB': 785, '256 GB': 785, '512 GB': 890, '1 TB': 1000 },
+  'iPhone 16 Pro Max': { '256 GB': 785, '512 GB': 890, '1 TB': 1000 },
   'iPhone 16e': { '128 GB': 395, '256 GB': 450, '512 GB': 590 },
   'iPhone 17': { '256 GB': 'Prossimamente', '512 GB': 'Prossimamente' },
   'iPhone 17 Pro': { '256 GB': 'Prossimamente', '512 GB': 'Prossimamente', '1 TB': 'Prossimamente' },
