@@ -1,6 +1,3 @@
-// Scraper prezzi valutazione iPhone — fonte primaria: wefix.it (store 365)
-// Fallback: tabella interna FALLBACK_PRICES (modificabile a mano per prezzi manuali)
-
 const fs = require('fs');
 
 const STORE_ID = 365;
@@ -9,9 +6,10 @@ const CATEGORY_ID = 'mnZ7oze2wHCnN1HRbNFJRXxX6UxKc8WK';
 const BASE_URL = 'https://wefix.it/v2/booking-modules';
 
 const RICARICO_BASE = 5;
-const REQUEST_DELAY_MS = 500;
-const MAX_DISCOVERY_ATTEMPTS = 60;
-const MAX_429_RETRIES = 5;
+const REQUEST_DELAY_MS = 600;
+const MAX_DISCOVERY_ATTEMPTS = 150;
+const MAX_429_RETRIES = 6;
+const MAX_NEW_DISCOVERIES_PER_RUN = 2;
 
 const COLORS_FILE = 'colors.json';
 const OUTPUT_FILE = 'prezzi.json';
@@ -75,8 +73,6 @@ const COLORI = {
   'iPhone Air': ['Black Titanium','White Titanium','Blue Titanium','Natural Titanium'],
 };
 
-// PREZZI MANUALI / FALLBACK
-// Modifica i numeri qui sotto per cambiare i prezzi manuali a mano
 const FALLBACK_PRICES = {
   'iPhone 11': { '64 GB': 120, '128 GB': 145, '256 GB': 160 },
   'iPhone 11 Pro': { '64 GB': 150, '256 GB': 195, '512 GB': 230 },
@@ -122,19 +118,25 @@ const ORDINE = [
   'iPhone Air',
 ];
 
+const HEADERS = {
+  'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
+  'Accept': 'application/json, text/plain, */*',
+  'Accept-Language': 'it-IT,it;q=0.9,en;q=0.8',
+  'Referer': 'https://wefix.it/',
+  'Origin': 'https://wefix.it',
+  'Sec-Fetch-Dest': 'empty',
+  'Sec-Fetch-Mode': 'cors',
+  'Sec-Fetch-Site': 'same-origin',
+};
+
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
 async function fetchJson(url, attempt = 0) {
-  const res = await fetch(url, {
-    headers: {
-      'User-Agent': 'Mozilla/5.0 (compatible; ifix-prezzi-bot)',
-      'Accept': 'application/json',
-    },
-  });
-  if (res.status === 429) {
-    if (attempt >= MAX_429_RETRIES) throw new Error('Rate limited');
-    const wait = Math.min(60000, 2000 * Math.pow(2, attempt));
-    console.log(`    ! 429 — aspetto ${wait/1000}s`);
+  const res = await fetch(url, { headers: HEADERS });
+  if (res.status === 429 || res.status === 503) {
+    if (attempt >= MAX_429_RETRIES) throw new Error(`Rate limited (${res.status})`);
+    const wait = Math.min(60000, 3000 * Math.pow(2, attempt));
+    console.log(`    ! ${res.status} — aspetto ${wait/1000}s`);
     await sleep(wait);
     return fetchJson(url, attempt + 1);
   }
@@ -154,19 +156,24 @@ async function getCapacities(deviceId) {
 
 async function getPrice(deviceId, capacityId, colorId) {
   const url = `${BASE_URL}/stores/${STORE_ID}/brands/${BRAND_ID}/devices/${deviceId}/storage-capacities/${capacityId}/colors/${colorId}/price`;
-  try {
-    const data = await fetchJson(url);
-    if (data.result && data.result.price) return parseFloat(data.result.price);
-    return null;
-  } catch { return null; }
+  const data = await fetchJson(url);
+  if (data.result && data.result.price) return parseFloat(data.result.price);
+  return null;
 }
 
 async function discoverColor(deviceId, capacityId) {
-  const probe = [78, 1, 5, 10, 20, 30, 50, 70, 80, 90, 100];
-  for (let id = 15; id <= 300; id += 5) if (!probe.includes(id)) probe.push(id);
-  const probes = probe.slice(0, MAX_DISCOVERY_ATTEMPTS);
-  for (const id of probes) {
-    if (await getPrice(deviceId, capacityId, id) !== null) return id;
+  const probes = [];
+  for (let id = 1; id <= 100; id++) probes.push(id);
+  for (let id = 105; id <= 300; id += 5) probes.push(id);
+  const limited = probes.slice(0, MAX_DISCOVERY_ATTEMPTS);
+
+  for (const id of limited) {
+    try {
+      const price = await getPrice(deviceId, capacityId, id);
+      if (price !== null) return id;
+    } catch (e) {
+      console.log(`    ! probe ${id}: ${e.message}`);
+    }
     await sleep(REQUEST_DELAY_MS);
   }
   return null;
@@ -192,7 +199,9 @@ function expandPrices(model, prices) {
 (async () => {
   const colorsCache = loadJson(COLORS_FILE, {});
   const wefixData = {};
+  const falliti = [];
   let okCount = 0;
+  let newDiscoveryAttempts = 0;
 
   let devices = [];
   try {
@@ -200,7 +209,7 @@ function expandPrices(model, prices) {
     devices = await getDevices();
     console.log(`  ${devices.length} modelli wefix\n`);
   } catch (e) {
-    console.error('  ✗', e.message);
+    console.error('  ✗ Errore lista modelli:', e.message);
   }
 
   for (const device of devices) {
@@ -208,32 +217,53 @@ function expandPrices(model, prices) {
     if (!userName) continue;
 
     console.log(`→ ${userName}`);
+
+    let capacities;
     try {
-      const capacities = await getCapacities(device.idDevice);
+      capacities = await getCapacities(device.idDevice);
       await sleep(REQUEST_DELAY_MS);
-      if (!capacities.length) { console.log('  ⊘ no capacità → fallback'); continue; }
+    } catch (e) {
+      console.log(`  ✗ capacità: ${e.message}`);
+      falliti.push(`${userName} (errore capacità)`);
+      continue;
+    }
+    if (!capacities.length) {
+      falliti.push(`${userName} (no capacità)`);
+      continue;
+    }
 
-      const firstCap = capacities[0];
-      let colorId = colorsCache[device.idDevice];
+    const firstCap = capacities[0];
+    let colorId = colorsCache[device.idDevice];
 
-      if (colorId) {
-        const test = await getPrice(device.idDevice, firstCap.id, colorId);
-        await sleep(REQUEST_DELAY_MS);
-        if (test === null) { colorId = null; delete colorsCache[device.idDevice]; }
+    if (colorId === false) {
+      console.log('  ⊘ discovery già fallita in passato');
+      falliti.push(`${userName} (failed marker)`);
+      continue;
+    }
+
+    if (typeof colorId !== 'number') {
+      if (newDiscoveryAttempts >= MAX_NEW_DISCOVERIES_PER_RUN) {
+        console.log(`  ⊙ quota discovery raggiunta (${MAX_NEW_DISCOVERIES_PER_RUN}/run)`);
+        falliti.push(`${userName} (in coda discovery)`);
+        continue;
       }
-
+      newDiscoveryAttempts++;
+      console.log(`  ⊙ discovery ${newDiscoveryAttempts}/${MAX_NEW_DISCOVERIES_PER_RUN}...`);
+      colorId = await discoverColor(device.idDevice, firstCap.id);
+      colorsCache[device.idDevice] = (colorId !== null) ? colorId : false;
+      fs.writeFileSync(COLORS_FILE, JSON.stringify(colorsCache, null, 2));
       if (!colorId) {
-        console.log('  ⊙ ricerca colore...');
-        colorId = await discoverColor(device.idDevice, firstCap.id);
-        if (!colorId) { console.log('  ⊘ no colore → fallback'); continue; }
-        colorsCache[device.idDevice] = colorId;
-        fs.writeFileSync(COLORS_FILE, JSON.stringify(colorsCache, null, 2));
-        console.log(`  ✓ colore ${colorId}`);
+        console.log('  ⊘ no colore valido — failed marker');
+        falliti.push(`${userName} (discovery senza risultato)`);
+        continue;
       }
+      console.log(`  ✓ colore ${colorId}`);
+    }
 
-      const colors = COLORI[userName] || [];
-      const modelData = {};
-      for (const cap of capacities) {
+    const colors = COLORI[userName] || [];
+    const modelData = {};
+    for (const cap of capacities) {
+      try {
         const price = await getPrice(device.idDevice, cap.id, colorId);
         await sleep(REQUEST_DELAY_MS);
         if (price === null) continue;
@@ -241,16 +271,15 @@ function expandPrices(model, prices) {
         console.log(`  ${cap.capacity}: ${price}€ → ${final}€`);
         modelData[cap.capacity] = {};
         for (const c of colors) modelData[cap.capacity][c] = final;
+      } catch (e) {
+        console.log(`  ! ${cap.capacity}: ${e.message}`);
       }
-
-      if (Object.keys(modelData).length > 0) { wefixData[userName] = modelData; okCount++; }
-      else console.log('  ⊘ nessun prezzo → fallback');
-    } catch (e) {
-      console.log(`  ✗ ${e.message} → fallback`);
     }
+
+    if (Object.keys(modelData).length > 0) { wefixData[userName] = modelData; okCount++; }
+    else falliti.push(`${userName} (nessun prezzo)`);
   }
 
-  // Merge: fallback come base, wefix sovrascrive dove disponibile
   const final = {};
   const allModels = new Set([...ORDINE, ...Object.keys(FALLBACK_PRICES), ...Object.keys(wefixData)]);
   for (const model of allModels) {
@@ -272,13 +301,16 @@ function expandPrices(model, prices) {
     formula: 'wefix +5€ (+20€ supervaluta)',
     statistiche: {
       modelli_da_wefix: okCount,
+      modelli_falliti: falliti.length,
       totale: Object.keys(ordinato).length,
+      nuove_discovery_eseguite_questo_run: newDiscoveryAttempts,
     },
+    modelli_in_fallback: falliti,
     dati: ordinato,
   };
 
   fs.writeFileSync(OUTPUT_FILE, JSON.stringify(output, null, 2));
-  console.log(`\n✓ ${OUTPUT_FILE} — ${okCount} da wefix, totale ${Object.keys(ordinato).length}`);
+  console.log(`\n✓ ${OUTPUT_FILE} — ${okCount} da wefix, ${falliti.length} fallback, ${newDiscoveryAttempts} discovery`);
 })().catch(err => {
   console.error('Errore fatale:', err);
   process.exit(1);
