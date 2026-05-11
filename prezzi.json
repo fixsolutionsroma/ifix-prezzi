@@ -1,11 +1,14 @@
 {
-  "aggiornato": "2026-05-10T08:32:08.860Z",
+  "aggiornato": "2026-05-11T07:23:55.456Z",
   "fonte": "wefix.it store 365 + fallback manuale",
   "formula": "wefix +5€ (+20€ supervaluta)",
   "statistiche": {
     "modelli_da_wefix": 0,
-    "totale": 29
+    "modelli_falliti": 0,
+    "totale": 29,
+    "nuove_discovery_eseguite_questo_run": 0
   },
+  "modelli_in_fallback": [],
   "dati": {
     "iPhone 11": {
       "64 GB": {
